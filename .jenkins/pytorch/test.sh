@@ -250,6 +250,9 @@ if ! [[ "${BUILD_ENVIRONMENT}" == *libtorch* ]]; then
   (cd test && python -c "import torch; print(torch.__config__.parallel_info())")
 fi
 
+#python test/distributed/test_data_parallel.py
+#gdb -batch -ex 'run' -ex 'bt' --args python test/distributed/test_data_parallel.py
+
 if [[ "${BUILD_ENVIRONMENT}" == *backward* ]]; then
   test_backward_compatibility
   # Do NOT add tests after bc check tests, see its comment.

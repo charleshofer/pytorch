@@ -4,6 +4,8 @@
 #include <ATen/native/cuda/MemoryAccess.cuh>
 #include <ATen/cuda/CUDAContext.h>
 
+#include <iostream>
+
 using namespace at::native;
 using namespace at::native::memory;
 
@@ -135,6 +137,7 @@ TEST(TestVectorizedMemoryAccess, CopyKernel) {
       cudaDeviceSynchronize();
       vectorized_copy<double, 4><<<1, 64>>>(b2, b1);
       cudaDeviceSynchronize();
+      std::cout << "i: " << i << " j: " << j << "\n";
       auto err = cudaGetLastError();
       if (i % 16 == 0 && j % 16 == 0) {
         ASSERT_EQ(err, cudaSuccess);

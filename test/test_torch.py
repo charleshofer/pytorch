@@ -773,6 +773,7 @@ class _TestTorchMixin(object):
                                [0, 1, 1],
                                [1, 1, 1]]))
 
+    @unittest.skip("CPH")
     def test_mv(self):
         def _test_mv(m1, v1):
             res1 = torch.mv(m1, v1)
